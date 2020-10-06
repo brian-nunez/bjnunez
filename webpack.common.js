@@ -52,8 +52,8 @@ module.exports = {
     new ManifestPlugin({
       fileName: "./manifest.json",
       seed: {
-        short_name: "ReactGH",
-        name: "Webpack, React, with GH Pages Setup",
+        short_name: "BJNunez",
+        name: "Learn more about Brian",
         icons: [
           {
             src: "./favicon.ico",
