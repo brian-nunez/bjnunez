@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: ["./src/index.js", "./src/styles.css"],
@@ -48,6 +49,22 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html",
       favicon: "./src/favicon.ico",
+      meta: {
+        description: 'A place to learn more about Brian!',
+      },
+    }),
+    new InjectManifest({
+      swSrc: './src/workers/sw.js',
+      swDest: 'sw.js',
+      include: [
+        /\.html$/,
+        /\.js$/,
+        /\.jsx$/,
+        /\.css$/,
+        /\.woff2$/,
+        /\.jpg$/,
+        /\.png$/
+      ],
     }),
     new ManifestPlugin({
       fileName: "./manifest.json",
