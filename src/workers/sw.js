@@ -3,6 +3,7 @@
 const filesToCache = [
   '/',
   '/bundle.js',
+  'main.css',
   '/manifest.json',
   '/favicon.ico',
 ];
@@ -10,7 +11,6 @@ const filesToCache = [
 const staticCacheName = 'cache-v1';
 
 self.addEventListener('install', event => {
-  console.log('Attempting to install service worker and cache static assets');
   event.waitUntil(
     caches.open(staticCacheName)
     .then(cache => {
@@ -20,11 +20,14 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((resp) => {
-      const response = resp || fetch(event.request);
-      console.log({ response });
-      return response;
-    })
-  );
+  if (event.request.mode === 'navigate') {
+    event.respondWith(caches.match('/index.html'));
+  } else {
+    event.respondWith(
+      caches.match(event.request).then((resp) => {
+        const response = resp || fetch(event.request);
+        return response;
+      })
+    );
+  }
 });

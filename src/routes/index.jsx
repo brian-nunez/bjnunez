@@ -1,13 +1,18 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import App from "../App";
-import About from "../components/About";
-import NotFound from "../components/NotFound";
+import { Route, Redirect } from "react-router-dom";
+import Transition from './Transition';
+import Home from "../pages/Home";
+import About from "../pages/About";
+import NotFound from "../pages/NotFound";
 
-export default () => (
-  <Switch>
-    <Route exact path="/" component={App} />
-    <Route path="/about" component={About} />
-    <Route component={NotFound} />
-  </Switch>
-);
+function Routes() {
+  return (
+    <Transition>
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route component={NotFound} />
+    </Transition>
+  );
+}
+
+export default Routes;

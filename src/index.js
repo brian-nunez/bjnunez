@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
 import firebase from 'firebase/app';
-import "./styles.css";
-import Routes from "./routes";
+import App from './App';
+import "./styles/index.css";
 import sw from './workers';
 
 sw();
@@ -23,8 +22,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
-  <Router>
-    <Routes />
-  </Router>,
+  <App />,
   document.getElementById("app")
 );
