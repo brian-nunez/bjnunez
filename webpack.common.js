@@ -10,6 +10,7 @@ module.exports = {
   entry: ["./src/index.js", "./src/styles/index.css"],
   optimization: {
     usedExports: true,
+    minimize: true,
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
   },
   module: {
