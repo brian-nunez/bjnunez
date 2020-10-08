@@ -46,7 +46,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-router-transition": "^2.0.0",
+    "react-transition-group": "^4.4.1",
+    "styled-components": "^5.2.0",
     "workbox-webpack-plugin": "^5.1.4"
   }
 }
